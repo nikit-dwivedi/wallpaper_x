@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const app = express();
 
 //----------import files--------------------------------------
-const {success, badRequest }  =  require('./src/api/v1/helpers/response.helper.js')
+const { success, badRequest } = require('./src/api/v1/helpers/response.helper.js')
 const version1Index = require("./src/api/v1/index.js");
 
 
@@ -15,7 +15,7 @@ app.use(morgan('dev'));
 // use cors
 app.use(cors());
 //body parsing
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //----------redirect routes-----------------------------------
@@ -23,6 +23,10 @@ app.use('/v1', version1Index);
 
 
 //----------for invalid requests start -----------------------
+
+app.get('/tester', (req, res) => {
+    res.send("script success")
+})
 
 
 app.all('*', async (req, res) => {
