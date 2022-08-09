@@ -105,3 +105,4 @@ dist
 
 # script
 /deploy.sh
+/test.sh
