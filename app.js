@@ -24,9 +24,7 @@ app.use('/v1', version1Index);
 
 //----------for invalid requests start -----------------------
 
-app.get('/testing',(req,res)=>{
-    res.send("hello friendss")
-})
+
 
 app.all('*', async (req, res) => {
     await badRequest(res, 'Invalid URL');
