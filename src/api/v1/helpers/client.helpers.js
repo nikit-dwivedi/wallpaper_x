@@ -16,7 +16,7 @@ addClient = async (clientData) => {
             gender: clientData.gender,
             dob: clientData.dob,
         };
-        const token = await generateUserToken(formattedData)
+        const token = generateUserToken(formattedData)
         const saveData = await clientModel(formattedData);
         return saveData.save() ? token : false
     } catch (err) {
@@ -81,7 +81,7 @@ addClient = async (clientData) => {
     checkLogin = async (email, password) => {
         const clientData = await clientModel.findOne({ email });
         if (clientData) {
-            const token = await generateUserToken(clientData);
+            const token = generateUserToken(clientData);
             const passwordCheck = await checkEncryption(password, clientData.password);
             await changeLoginStatus(clientData.clientId, true);
             return passwordCheck ? token : false;
